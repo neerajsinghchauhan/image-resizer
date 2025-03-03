@@ -1,0 +1,131 @@
+/* General body styling */
+section {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Light background color */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Styling for the login-box */
+.login-box {
+    background: rgba(255, 255, 255, 0.2); /* Transparent background */
+    padding: 20px 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px); /* Adds blur effect for a modern look */
+}
+
+/* Login title styling */
+.login-box h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff; /* White text for title */
+    font-weight: bold;
+}
+
+/* Input box styling */
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-box .form-control {
+    width: 100%;
+    padding-left: 40px;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Transparent border */
+    font-size: 16px;
+    color: #ffffff; /* White text for input fields */
+    background: rgba(255, 255, 255, 0.1); /* Transparent input background */
+    caret-color: #ffffff; /* White cursor */
+}
+
+
+
+
+.input-box .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Light white placeholder */
+}
+
+.input-box .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7); /* Light white icons */
+    font-size: 20px;
+}
+
+/* Checkbox styling */
+.checkbox label {
+    font-size: 14px;
+    color: #dddddd; /* Dark white for labels */
+}
+
+/* Button styling */
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 40px;
+    transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Register link styling */
+.register-link p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #dddddd; /* Dark white for register link text */
+}
+
+.register-link a {
+    color: #ffffff; /* Bright white for links */
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-box {
+        padding: 15px 20px;
+    }
+
+    .login-box h3 {
+        font-size: 20px;
+    }
+
+    .input-box .form-control {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    button[type="submit"] {
+        font-size: 14px;
+    }
+
+    .register-link p {
+        font-size: 12px;
+    }
+}

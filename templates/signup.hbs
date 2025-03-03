@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Ecommerce app</title>  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="./signup.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style> .form-container .form-control { 
+        max-width: 500px; /* Adjust the maximum width */ 
+        margin: 0 ; /* Center align the input fields */  
+        }    
+    </style>
+</head>
+<body>
+    <section>
+    <div  class="signup-box">  
+        <h3 class="text mt-3">Sign up</h3>  
+        {{#if errors}}
+        <ul class="text-danger">
+            {{#each errors}}
+            <li>{{msg}}</li>
+            {{/each}}
+        </ul>
+        {{/if}}
+        <form action="/signup" method="post" class="form-container">  
+            <div class="input-box">
+              <span class="icon"><ion-icon name="person-circle"></ion-icon></span>  
+              <label for="password">Username</label> 
+              <input type="name" name="name" class="form-control" id="username" placeholder="Enter username"> 
+            </div>  
+            <!-- Password with Show/Hide -->
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <label for="password" class="d-block w-100">Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Enter password"
+                >
+                <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    id="toggle-password-btn"
+                    onclick="togglePasswordVisibility()"
+                >
+                    <i id="toggle-icon" class="fas fa-eye"></i>
+                </button>
+            </div>  
+             <div class="checkbox"> 
+            	<label><input type="checkbox"> Remember me</label> 				
+             </div> 
+            <button type="submit" class="btn btn-primary">Submit</button> 
+        </form>   
+    </div> 
+    </section>
+    <!-- Password Show/Hide Script -->
+    <script>
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById("password");
+            const toggleIcon = document.getElementById("toggle-icon");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</body>
+</html>

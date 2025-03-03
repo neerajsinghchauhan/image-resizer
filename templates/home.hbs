@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Resizer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .preview-images img { width: 30%; margin: 10px; }
+        .dimension-inputs { margin: 15px 0; }
+        .form-container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Image Resizer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-container">
+            <h4 class="text-center mb-4">Upload & Resize Images</h4>
+
+            <form action="/multiple-upload" method="POST" enctype="multipart/form-data">
+                <div class="form-group dimension-inputs">
+                    <label>Width: 
+                        <input type="number" name="width" class="form-control" required min="1" placeholder="Enter width">
+                    </label>
+                    <label>Height: 
+                        <input type="number" name="height" class="form-control" required min="1" placeholder="Enter height">
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="images">Select Images:</label>
+                    <input type="file" name="images" id="images" class="form-control-file" multiple required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Resize & Download</button>
+            </form>
+
+            <div class="preview-images mt-4" id="preview-container"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Image preview functionality
+            $("#images").on("change", function() {
+                const previewContainer = $("#preview-container");
+                previewContainer.empty();
+
+                if (this.files && this.files.length > 0) {
+                    Array.from(this.files).forEach(file => {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            $("<img>")
+                                .attr("src", event.target.result)
+                                .addClass("img-preview")
+                                .appendTo(previewContainer);
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
