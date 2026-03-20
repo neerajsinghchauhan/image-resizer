@@ -18,6 +18,10 @@
     <div  class="login-box">  
         <h3 class="text mt-3">Login</h3>  
         
+        {{#if error}}
+        <p class="text-danger text-center">{{error}}</p>
+        {{/if}}
+
         <form action="/login" method="post" class="form-container">  
             <div class="input-box">
               <span class="icon"><ion-icon name="person-circle"></ion-icon></span>  
